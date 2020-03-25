@@ -10,6 +10,7 @@ Api para la gestion de boleteria, snacks y asignación de empleados de la empres
 * Cristian Patiño
 * Paula Avendaño
 * Neider Puentes
+* Jose González
 
 ### Dependencias
 
