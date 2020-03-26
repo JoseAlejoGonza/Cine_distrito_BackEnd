@@ -50,11 +50,43 @@ Este token debe ser enviado en el request <b>HEADER</b> con el mismo nombre para
 
 ## Peticiones
 
-### Personas
+### Cliente
 
 #### GET
 
-<b>/personas</b> : Obtendra todos los usuarios registrados en la base de datos
+<b>/empleados/:fk_persona</b> : Obtendra los datos de un solo cliente.
+Ejemplo de respuesta:
+
+```javascript
+ "data": {
+        "fk_persona": 212341233,
+        "i_numpuntos": 10,
+        "i_numtarjeta": "45464",
+        "d_fechapuntos": "aaaa/mm/dd"
+    }
+```
+
+#### POST
+
+<b>/empleados/crear</b> : Registra un nuevo cliente en la base de datos, la estructura de la petición debe ser :
+
+```javascript
+{ 
+    k_numero_identificacion: '34342312',
+    v_primernombre: 'ffff',
+    v_segundonombre: 'ssss',
+    v_primerapellido: 'asafa',
+    v_segundoapellido: 'aasdasd',
+    i_telefono: '534545',
+    v_direccion: 'sdvdvv',
+    pass: 'holA',
+    i_numpuntos: 34,
+    i_numtarjeta: 215151,
+    d_fechapuntos: 'aaaa/mm/dd'
+}
+```
+
+### Contratos
 
 ### Empleados
 
@@ -113,3 +145,21 @@ Ejemplo de respuesta:
     fk_numcontrato: '21'
 }
 ```
+
+### EmpleMulti
+### Funcion_sala
+### Funciones
+### Index
+### Login
+### Pagos
+### Peliculas
+
+### Personas
+
+#### GET
+
+<b>/personas</b> : Obtendra todos los usuarios registrados en la base de datos
+
+### Reserva
+### Salas
+### Snacks
