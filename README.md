@@ -125,7 +125,7 @@ Ejemplo de respuesta:
 
 ```
 
-<b>/constratos/:id</b> : Obtendra los datos de un solo empleado.
+<b>/contratos/:id</b> : Obtendra los datos de un solo empleado.
 Ejemplo de respuesta:
 
 ```javascript
@@ -139,7 +139,7 @@ Ejemplo de respuesta:
 
 #### POST
 
-<b>/empleados/crear</b> : Registra un nuevo empleado en la base de datos, la estructura de la petición debe ser :
+<b>/contratos/crear</b> : Registra un nuevo empleado en la base de datos, la estructura de la petición debe ser :
 
 ```javascript
 { 
@@ -221,7 +221,95 @@ Ejemplo de respuesta:
 ```
 
 ### EmpleMulti
+
+#### GET
+
+<b>/empleadosMulti</b> : Obtendrá todos los empleados registrados por multiplex.
+Ejemplo de respuesta:
+
+```javascript
+ "data": {
+        "id": 212341233,
+        "fk_empleado": 10,
+        "fk_multiplex": 20,
+        "f_transferencia": '2020-1-12',
+    }
+```
+#### POST
+
+<b>/empleadosMulti/asignar</b> : asignará un empleado a cierto multiplex, la estructura de la petición debe ser :
+
+```javascript
+    {
+        id: (INTEGER),
+        fk_persona: (INTEGER),
+        fk_multiplex: (INTEGER),
+        f_transferencia: (DATE)
+    }
+```
+
 ### Funcion_sala
+
+#### GET
+
+<b>/funcion_sala</b> : Obtendrá todos las funciones por sala registrados en multiplex.
+Ejemplo de respuesta:
+
+```javascript
+    "data": [
+        {
+            "id": 2,
+            "fk_funcion": 1,
+            "fk_sala": 2
+        },
+        {
+            "id": 3,
+            "fk_funcion": 50,
+            "fk_sala": 3
+        },
+        {
+            "id": 4,
+            "fk_funcion": 50,
+            "fk_sala": 14
+        },
+        {
+            "id": 5,
+            "fk_funcion": 50,
+            "fk_sala": 23
+        },
+        {
+            "id": 6,
+            "fk_funcion": 50,
+            "fk_sala": 36
+        },
+        {
+            "id": 7,
+            "fk_funcion": 50,
+            "fk_sala": 44
+        },
+        {
+            "id": 8,
+            "fk_funcion": 52,
+            "fk_sala": 43
+        }
+    ]
+```
+<b>/funcion_sala/:id</b> : Obtendrá una de las funciones por sala registrados en multiplex.
+Ejemplo de respuesta:
+
+```javascript
+"data": {
+        "id": 33,
+        "fk_funcion": 73,
+        "fk_sala": 49
+    }
+```
+
+
+
+
+
+
 ### Funciones
 ### Index
 ### Login
