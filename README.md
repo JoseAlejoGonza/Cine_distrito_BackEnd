@@ -252,7 +252,7 @@ Ejemplo de respuesta:
 
 #### GET
 
-<b>/funcion_sala</b> : Obtendrá todos las funciones por sala registrados en multiplex.
+<b>/funcion_sala</b> : Obtendrá todas las funciones por sala registrados en multiplex.
 Ejemplo de respuesta:
 
 ```javascript
@@ -304,24 +304,257 @@ Ejemplo de respuesta:
         "fk_sala": 49
     }
 ```
+#### POST
 
+<b>/funcion_sala/crear</b> : asignará una sala cierta funcion. La estructura de la petición debe ser :
 
+```javascript
+    {
+        id: (INTEGER),
+        fk_funcion: (INTEGER),
+        fk_sala: (INTEGER)
+    }
+```
+Si todo está correcto aparacerá un mensaje como este:
 
+```javascript
+    'creada successfully'
+```
+Si algo sale mal aparecerá un mensaje como este:
 
-
+```javascript
+    'Something goes wrong crear_funcion'
+```
 
 ### Funciones
-### Index
-### Login
-### Pagos
+
+#### GET
+
+<b>/funciones</b> : Obtendrá todas las funciones por sala registrados en multiplex.
+Ejemplo de respuesta:
+
+```javascript
+    "data": [
+        {
+            "id": 50,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-01",
+            "fk_pelicula": 4,
+            "t_inicioproyeccion": "14:00:00",
+            "t_finproyeccion": "17:02:00"
+        },
+        {
+            "id": 65,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-02",
+            "fk_pelicula": 4,
+            "t_inicioproyeccion": "14:00:00",
+            "t_finproyeccion": "17:02:00"
+        },
+        {
+            "id": 52,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-01",
+            "fk_pelicula": 4,
+            "t_inicioproyeccion": "16:00:00",
+            "t_finproyeccion": "19:02:00"
+        },
+        {
+            "id": 15,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-05-01",
+            "fk_pelicula": 10,
+            "t_inicioproyeccion": "16:00:00",
+            "t_finproyeccion": "19:10:00"
+        },
+        {
+            "id": 16,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-16",
+            "fk_pelicula": 11,
+            "t_inicioproyeccion": "15:00:00",
+            "t_finproyeccion": "17:27:00"
+        },
+        {
+            "id": 17,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-17",
+            "fk_pelicula": 11,
+            "t_inicioproyeccion": "17:00:00",
+            "t_finproyeccion": "19:27:00"
+        },
+        {
+            "id": 19,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-03-20",
+            "fk_pelicula": 12,
+            "t_inicioproyeccion": "15:00:00",
+            "t_finproyeccion": "16:30:00"
+        },
+        {
+            "id": 68,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-02",
+            "fk_pelicula": 4,
+            "t_inicioproyeccion": "16:00:00",
+            "t_finproyeccion": "19:02:00"
+        },
+        {
+            "id": 69,
+            "v_estado": "activa",
+            "d_proyeccion": "2020-04-03",
+            "fk_pelicula": 4,
+            "t_inicioproyeccion": "14:00:00",
+            "t_finproyeccion": "17:02:00"
+        }
+    ]
+```
+<b>/funciones/:id</b> : Obtendrá una de las funciones registradas en multiplex.
+Ejemplo de respuesta:
+
+```javascript
+    "data": {
+        "id": 43,
+        "v_estado": "activa",
+        "d_proyeccion": "2020-05-01",
+        "fk_pelicula": 24,
+        "t_inicioproyeccion": "15:00:00",
+        "t_finproyeccion": "16:40:00"
+    }
+```
+<b>/funciones/:get_funcion_pelicula</b> : Obtendrá las funciones de la misma película.
+
+```javascript
+    "data": {
+        "id": 43,
+        "v_estado": "activa",
+        "d_proyeccion": "2020-05-01",
+        "fk_pelicula": 24,
+        "t_inicioproyeccion": "15:00:00",
+        "t_finproyeccion": "16:40:00"
+    }
+```
+
+#### POST
+
+<b>/funciones/crear</b> : Este metodo creará una nueva función, la estructura de la petición debe ser :
+
+```javascript
+    {
+        id: (INTEGER),
+        v_estado: (STRING),
+        d_proyeccion: (DATE),
+        fk_pelicula: (INTEGER),
+        t_inicioproyeccion: (TIME),
+        t_finproyeccion: (TIME)
+    }
+```
+El atributo v_estado tiene valores predeterminados para que todo funcione correctamente:
+
+```javascript
+     values:['activa','Activa','inactiva','Inactiva']
+```
+
 ### Peliculas
+
+#### GET
+
+<b>/peliculas</b> : Obtendrá todas las peliculas guardadas en la base de datos.
+Ejemplo de respuesta:
+
+```javascript
+    "data": [
+        {
+            "id": 4,
+            "v_nombre": "Avengers: EndGame",
+            "i_duracion": 182,
+            "tx_sinapsis": "Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos, el malvado que diezmó el planeta y el universo.",
+            "v_foto": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAJxCAYAAABR3YUQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAP+lSURBVHhe1P11lF1Zn"
+
+        }
+    ]
+```
+#### POST
+
+<b>/peliculas/crear</b> : Este metodo creará una nueva pelicula, la estructura de la petición debe ser :
+
+```javascript
+    {
+        id: (INTEGER),
+        v_nombre: (STRING),
+        i_duracion: (INTEGER),
+        v_foto: (TEXT),
+        v_genero: (STRING),
+        v_clasificacion: (STRING)
+        v_reparto: (STRING)
+        v_director: (STRING)
+        d_fecha_estreno: (DATE)
+        v_pais_origen: (STRING)
+    }
+```
+Si el registro es exitoso aparecerá un mensaje como este:
+```javascript
+    'Pelicula creada successfully'
+```
+
+Si hay algún problema en el registro aparecerá un mensaje así:
+```javascript
+    'Something goes wrong crear_funcion'
+```
 
 ### Personas
 
 #### GET
 
-<b>/personas</b> : Obtendra todos los usuarios registrados en la base de datos
+<b>/personas</b> : Obtendrá todos los usuarios registrados en la base de datos.
+Ejemplo de respuesta:
 
-### Reserva
-### Salas
-### Snacks
+```javascript
+    "data": [
+        {
+            "pk_numero_identificacion": 1234,
+            "v_primernombre": "Juan",
+            "v_segundonombre": "Andres",
+            "v_primerapellido": "Carne",
+            "v_segundoapellido": "Res",
+            "i_telefono": 45345346,
+            "v_direccion": "KNLFNBL.DFNB",
+            "v_pass": "$2a$10$ybbWChTvP3uMbXInKZIch.JrCTGqvPBorenM3alqE7FWPMELC1CKy",
+            "fk_tipo_documento": 1,
+            "v_correo_electronico": "wava0324",
+            "v_foto": "foto.png"
+        },
+        {
+            "pk_numero_identificacion": 1019121,
+            "v_primernombre": "cristian",
+            "v_segundonombre": "felipe",
+            "v_primerapellido": "Patiño",
+            "v_segundoapellido": "Caceres",
+            "i_telefono": 31946199,
+            "v_direccion": "cll 131 B # 129 - 52",
+            "v_pass": "$2a$10$80N30gxP6SCEU3KhVaGlr.wab4QRt50VKu/betkXNdZKMdZVLnNB.",
+            "fk_tipo_documento": 1,
+            "v_correo_electronico": "cfpatinoc@correo.udistrital.edu.co",
+            "v_foto": "data:image/jpeg;base64,/9j/"
+        }
+    ]
+```
+
+<b>/personas/:pk_numero_identificacion</b> : Obtendrá uno de los usuarios registrados en la base de datos.
+Ejemplo de respuesta:
+
+```javascript
+    "data": {
+        "pk_numero_identificacion": 1234,
+        "v_primernombre": "Juan",
+        "v_segundonombre": "Andres",
+        "v_primerapellido": "Carne",
+        "v_segundoapellido": "Res",
+        "i_telefono": 45345346,
+        "v_direccion": "KNLFNBL.DFNB",
+        "v_pass": "$2a$10$ybbWChTvP3uMbXInKZIch.JrCTGqvPBorenM3alqE7FWPMELC1CKy",
+        "fk_tipo_documento": 1,
+        "v_correo_electronico": "wava0324",
+        "v_foto": "foto.png"
+    }
+```
