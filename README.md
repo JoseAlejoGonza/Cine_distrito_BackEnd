@@ -58,12 +58,14 @@ Este token debe ser enviado en el request <b>HEADER</b> con el mismo nombre para
 Ejemplo de respuesta:
 
 ```javascript
- "data": {
-        "fk_persona": 212341233,
-        "i_numpuntos": 10,
-        "i_numtarjeta": "45464",
-        "d_fechapuntos": "aaaa/mm/dd"
+ {
+    "data": {
+        "fk_persona": 1234,
+        "i_numpuntos": 0,
+        "i_numtarjeta": "0",
+        "d_fechapuntos": ""
     }
+}
 ```
 
 #### POST
@@ -72,18 +74,23 @@ Ejemplo de respuesta:
 
 ```javascript
 { 
-    k_numero_identificacion: '34342312',
-    v_primernombre: 'ffff',
-    v_segundonombre: 'ssss',
-    v_primerapellido: 'asafa',
-    v_segundoapellido: 'aasdasd',
-    i_telefono: '534545',
-    v_direccion: 'sdvdvv',
-    pass: 'holA',
+    k_numero_identificacion: '',
+    v_primernombre: '',
+    v_segundonombre: '',
+    v_primerapellido: '',
+    v_segundoapellido: '',
+    i_telefono: '',
+    v_direccion: '',
+    pass: '',
     i_numpuntos: 34,
     i_numtarjeta: 215151,
     d_fechapuntos: 'aaaa/mm/dd'
 }
+```
+:si hay algun problema enviará un mensaje de error así:
+
+```javascript
+    'Something goes wrong in getOneCliente'
 ```
 
 ### Contratos
