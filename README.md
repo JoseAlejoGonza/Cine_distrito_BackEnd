@@ -54,7 +54,7 @@ Este token debe ser enviado en el request <b>HEADER</b> con el mismo nombre para
 
 #### GET
 
-<b>/empleados/:fk_persona</b> : Obtendra los datos de un solo cliente.
+<b>/Cliente/:fk_persona</b> : Obtendra los datos de un solo cliente.
 Ejemplo de respuesta:
 
 ```javascript
@@ -70,30 +70,97 @@ Ejemplo de respuesta:
 
 #### POST
 
-<b>/empleados/crear</b> : Registra un nuevo cliente en la base de datos, la estructura de la petición debe ser :
+<b>/cliente/crear</b> : Registra un nuevo cliente en la base de datos, la estructura de la petición debe ser :
 
 ```javascript
 { 
-    k_numero_identificacion: '',
-    v_primernombre: '',
-    v_segundonombre: '',
-    v_primerapellido: '',
-    v_segundoapellido: '',
-    i_telefono: '',
-    v_direccion: '',
-    pass: '',
-    i_numpuntos: 34,
-    i_numtarjeta: 215151,
-    d_fechapuntos: 'aaaa/mm/dd'
+    k_numero_identificacion: (INTEGER),
+    v_primernombre: (STRING),
+    v_segundonombre: (STRING),
+    v_primerapellido: (STRING),
+    v_segundoapellido: (STRING),
+    i_telefono: (INTEGER),
+    v_direccion: (STRING),
+    pass: (STRING),
+    i_numpuntos: (INTEGER),
+    i_numtarjeta: (STRING),
+    d_fechapuntos: (STRING)
 }
 ```
-:si hay algun problema enviará un mensaje de error así:
+si hay algun problema enviará un mensaje de error así:
 
 ```javascript
     'Something goes wrong in getOneCliente'
 ```
 
 ### Contratos
+
+#### GET
+
+<b>/contratos</b> : Obtendra todos los contratos registrados en la base de datos.
+Ejemplo de respuesta:
+
+```javascript
+
+    "data": [
+        {
+            "id": 20,
+            "v_tipocontrato": "prestación de servicios",
+            "d_iniciocontrato": "2019-10-24",
+            "i_salario": 3000000
+        },
+        {
+            "id": 21,
+            "v_tipocontrato": "indefinido",
+            "d_iniciocontrato": "2019-10-24",
+            "i_salario": 4100000
+        },
+        {
+            "id": 22,
+            "v_tipocontrato": "gay",
+            "d_iniciocontrato": "2019-12-15",
+            "i_salario": 11111111
+        }
+    ]
+
+```
+
+<b>/constratos/:id</b> : Obtendra los datos de un solo empleado.
+Ejemplo de respuesta:
+
+```javascript
+    "data": {
+        "id": 21,
+        "v_tipocontrato": "indefinido",
+        "d_iniciocontrato": "2019-10-24",
+        "i_salario": 4100000
+    }
+```
+
+#### POST
+
+<b>/empleados/crear</b> : Registra un nuevo empleado en la base de datos, la estructura de la petición debe ser :
+
+```javascript
+{ 
+    id: (INTEGER),
+    v_tipocontrato: (STRING),
+    d_iniciocontrato: (DATE),
+    i_salario: (INTEGER)
+}
+```
+
+Si todo sale bien enviará un mensaje como este:
+
+```javascript
+    'Contrato created successfully'
+```
+
+Si algo sale mal enviará un mensaje como este:
+
+```javascript
+    'Something goes wrong in crear_contrato'
+```
 
 ### Empleados
 
